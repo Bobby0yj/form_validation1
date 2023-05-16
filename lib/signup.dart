@@ -1,5 +1,4 @@
-import 'dart:html';
-
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -21,9 +20,10 @@ class _SignUpState extends State<SignUp> {
   TextEditingController pass = TextEditingController();
   TextEditingController cpass = TextEditingController();
   int? counter = 0;
-  List userList = [];
-  userDetails(fName, phone, gmail, dob, pass, cpass) {
-    Map user = {};
+  userDetails(fName, phone, gmail, dob, pass, cpass) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    Map<String, dynamic> user = {};
+    List<Map<String, dynamic>> userList = [];
     user["name"] = fName;
     user["phone"] = phone;
     user["gmail"] = gmail;
@@ -31,7 +31,8 @@ class _SignUpState extends State<SignUp> {
     user["password"] = pass;
     user["cpass"] = cpass;
     userList.add(user);
-    print(userList);
+    prefs.setString("listUsers", jsonEncode(userList));
+    setState(() {});
   }
 
   String dropdownValue = 'Select Gender';
