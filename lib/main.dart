@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:form_validation/signup.dart';
-
 import 'login.dart';
 
 void main() {
