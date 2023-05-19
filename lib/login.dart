@@ -154,7 +154,7 @@ class _ValidationState extends State<Validation> {
                   child: InkWell(
                     onTap: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => SignUp()));
+                          MaterialPageRoute(builder: (context) => ImageUrl()));
                     },
                     child: const Text(
                       "Create an Account ?",
